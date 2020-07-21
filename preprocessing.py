@@ -5,16 +5,19 @@ from keras.preprocessing import image
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.image as mpimg
-base_dir = './'
-img_dir = './images/'
+
+origin_dir = './images/original/'
+label_dir = './images/label/'
 f_dic = {}
 index = 0
 X = []
 Y = []
-def img_proc(filename):
-    #img = cv2.imread(img_dir+filename+'.png')
-    img = cv2.imread(img_dir+filename+'.png', flags=cv2.IMREAD_GRAYSCALE)
-    if img.shape[1] > img.shape[0]:
+def img_proc(filename, label=False):
+    img = cv2.imread(label_dir+'.png', flags=cv2.IMREAD_GRAYSCALE)
+    if label == True:
+        img = img/255.
+    #MAX(W, H):  3072 5191
+    if img.shape[1] > img.shape[0]: # W > H
         percent = 256/img.shape[1]
     else:
         percent = 256/img.shape[0]
