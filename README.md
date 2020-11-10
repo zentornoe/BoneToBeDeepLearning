@@ -1,4 +1,4 @@
-# CT Femoral Bone Segmentation
+# CT Femoral Bone Segmentation & 
 
 2020 KNU Capstone Design Project
 
