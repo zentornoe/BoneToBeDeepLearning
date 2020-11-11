@@ -88,7 +88,43 @@ A function for finding features in an image in which a fractured bone overlaps, 
 
 |Input|Output|
 |:---:|:---:|
-|OpenCV2 image|OpenCV2 image(that representing points with features)|
+|OpenCV2 image|pts1, pts0 (coordinate of fractured position)|
+
+### 6) seperate.py
+Function of splitting unoverlapped bones
+
+|Input|Output|
+|:---:|:---:|
+|OpenCV2 image|OpenCV2 image0, OpenCV2 image1|
+
+### 7) cuttinge.py
+Split overlapping fractured bones using input coordinates.
+
+|Input|Output|
+|:---:|:---:|
+|OpenCV2 image, pts0, pts1(coordinate of fractured position)|OpenCV2 image0, OpenCV2 image1|
+
+
+### 8) PostProcessing.py
+Files Combining Completed Modules
+
+| Internal Function name | functions |
+|---|---|
+| **expand** | expanding 5 times the image |
+| **angle** | Evaluate the rotated angle relative to the y-axis. |
+| **rotate** | Rotate the image so that it stands on the z-axis. |
+| **division** | Divide and erase unnecessary areas. |
+| **seperate** | Divide the fractured bone into two images so that it has only one bone. |
+| **fracWhere** | When a fractured bone is  it first finds the feature points and returns them to find the fractured position. |
+| **cutting** | Using the coordinates of the feature point, separate the fractured bone into two images so that it has only one bone per image. |
+
+
+| Case Number | Cases |
+|---|---|
+| **Case 1** | _No_ fracture, _no_ area division required. |
+| **Case 2** | _No_ fracture; area division required. |
+| **Case 3** | Fractured, _not_ overlapped |
+| **Case 4** | Fractured, overlapped |
 
 * * *
 ## 4. Similarity
